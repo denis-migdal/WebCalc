@@ -77,8 +77,6 @@ export class PlageSelector {
 
         this.#sheet = sheet;
 
-        const main = document.querySelector('main')!;
-
         const on_mouse_move = (ev: MouseEvent) => {
 
             this.#final_pos = this.#ev2pos(ev);
@@ -119,10 +117,10 @@ export class PlageSelector {
             this.#prev_selection = sheet.selection.cells.slice();
 
             this.#updateSelection();
-            main.addEventListener('mousemove', on_mouse_move);
+            document.addEventListener('mousemove', on_mouse_move);
 
             document.addEventListener('mouseup', () => {
-                main.removeEventListener('mousemove', on_mouse_move);
+                document.removeEventListener('mousemove', on_mouse_move);
             }, {once: true});
             
         });

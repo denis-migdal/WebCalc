@@ -1,6 +1,5 @@
-//TODO: webpack config...
-import LISS from "../../../libs/LISS";
-import { formatRaw, Formats } from "./format";
+import LISS from "LISS";
+import { formatRaw } from "./format";
 import { CalcSheet, Cell } from "./sheet";
 
 const css = `

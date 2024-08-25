@@ -1,8 +1,5 @@
-//TODO: webpack config...
-import LISS from "../../../libs/LISS";
-import { CalcSheet, CellList, defaultFormat } from "./sheet";
-
-//TODO: syntax highlight ;)
+import LISS from "LISS";
+import { CalcSheet } from "./sheet";
 
 const css = `
     :host {

@@ -1,5 +1,4 @@
-//TODO: webpack config...
-import LISS from "../../../libs/LISS";
+import LISS from "LISS";
 
 //@ts-ignore
 import css from "!!raw-loader!./index.css";
@@ -256,8 +255,6 @@ export class CalcSheet extends LISS({
         const recopy = new RecopyHandle(this);
         const copy   = new RangeOverlay(this, "copy_highlight");
 
-        const main = document.querySelector("main")!;
-
         this.host.addEventListener('cell_edit_end', () => {
             this.#clearFormulaRefs();
         });
@@ -321,7 +318,7 @@ export class CalcSheet extends LISS({
             this.states.recopy.state = this.#selection;
 
             // @ts-ignore
-            main.addEventListener("mousemove", on_recopy_move);
+            document.addEventListener("mousemove", on_recopy_move);
 
             document.addEventListener("mouseup", () => {
                 
@@ -361,7 +358,7 @@ export class CalcSheet extends LISS({
                 last_recopy_dir    = null;
 
                 // @ts-ignore
-                main.removeEventListener("mousemove", on_recopy_move);
+                document.removeEventListener("mousemove", on_recopy_move);
 
             }, {once: true});
         });

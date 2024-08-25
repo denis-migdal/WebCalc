@@ -1,5 +1,5 @@
 import { Formula } from "./formula_parser";
-import { CalcSheet, Cell, CellList, RawContentType } from "./sheet";
+import { CalcSheet, Cell, CellList } from "./sheet";
 
 export class FormatManager {
     constructor(sheet: CalcSheet) {

@@ -1,4 +1,4 @@
-import { Format, Formats } from "./format";
+import { Formats } from "./format";
 import { CalcSheet } from "./sheet";
 
 const JSZip = require("jszip");

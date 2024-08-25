@@ -1,4 +1,4 @@
-import LISS from "../../../libs/LISS";
+import LISS from "LISS";
 import { Format, Formats } from "./format";
 import { CalcSheet, CellList } from "./sheet";
 

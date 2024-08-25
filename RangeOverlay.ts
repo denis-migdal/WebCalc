@@ -1,4 +1,5 @@
-import { str2html } from "struct/utils/str2html";
+
+import { str2html } from "WebUtils/DOM";
 import { CalcSheet, CellList } from "./sheet";
 
 export class RangeOverlay extends EventTarget {

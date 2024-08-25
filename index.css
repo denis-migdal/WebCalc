@@ -1,0 +1,329 @@
+:host table {
+    border-collapse: collapse;
+    border-top-color: transparent;
+
+    & > tbody {
+        outline: 0px solid transparent;
+    }
+
+    & > tbody > tr:first-child {
+        border-top-color: transparent;
+        
+        & > th {
+            border-top-color: transparent;
+        }
+    }
+}
+
+:host :is(tr,th,td) {
+    border:1px solid #c0c0c0;
+}
+
+:host([showgrid="false"]) td {
+    border-color: transparent;
+}
+
+:host tr {
+    height: 0.45cm;
+    line-height: 0.45cm;
+}
+
+
+:host :is(td, th):not([contenteditable]) {
+    user-select: none;
+}
+/*
+:host td[contenteditable] {
+    user-select: text;
+}*/
+
+:host colgroup > col {
+    width: 2.26cm;
+}
+:host colgroup > col:first-child {
+    width: calc( 2.26cm / 2.5) ;
+}
+
+:host :is(td, th) {
+    color: black;
+    height: 0.45cm;
+
+    font-size: 10pt;
+
+    box-sizing: border-box;
+    font-family: 'Liberation Sans';
+}
+
+
+:host {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+:host div.toolbar {
+    background-color: #cecece;
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+
+    & > *:not(:first-child) {
+        flex: 1 1 0;
+    }
+    & > *:first-child {
+        width: calc( 1.5 * 2.26cm );
+    }
+}
+
+:host th {
+    background-color: #cecece;
+    border-color: #8a8a8a;
+    font-weight: normal;
+
+    &.highlight {
+        background-color: #398ee7;
+        color: white;
+    }
+}
+
+:host(.cell_edit) .cursor {
+    display: none;
+}
+
+:host(.recopy) {
+    cursor: cell;
+}
+
+:host {
+
+    .recopy {
+        cursor: cell;
+        background-color: #398ee7;
+    }
+
+    .cursor {
+        background: none;
+        border: 2px solid #398ee7;
+        pointer-events: none;
+    }
+}
+
+:host .overlay {
+    position: absolute;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:host .hidden {
+    display: none;
+}
+
+:host .selection_highlight {
+    background-color: #398ee7; /*#cde3f9;*/
+    opacity: 0.5;
+    pointer-events: none; /* TODO */
+}
+
+
+:host td {
+
+    --font_size: 10pt;
+    font-size: var(--font_size);
+    line-height: calc( var(--font_size) * 1.2 );
+
+    --indent: 0;
+
+    --border_color: black;
+    --background_color: white;
+    --foreground_color: black;
+    background-color: var(--background_color);
+    color           : var(--foreground_color);
+
+    white-space: pre;
+
+    vertical-align: bottom;
+
+    &:is([data-type="number"],[data-type="pourcent"],[data-type="date"], [data-type="boolean"]) {
+        text-align: right;
+    }
+
+    &[contenteditable] {
+        outline: 0px solid transparent;
+    }
+
+    &.ajuster {
+        word-break: break-all;
+        white-space: normal;
+    }
+
+    /** style **/
+    &.italic {
+        font-style: italic;
+    }
+    &.bold {
+        font-weight: bold;
+    }
+    &.underline {
+        text-decoration: underline;
+    }
+    &.align_left {
+        padding-left: calc( var(--indent) * 10px);
+        text-align: left;
+    }
+    &.align_center {
+        text-align: center;
+    }
+    &.align_right {
+        padding-right: calc( var(--indent) * 10px);
+        text-align: right;
+    }
+    &.valign_top {
+        vertical-align: top;
+    }
+    &.valign_middle {
+        vertical-align: middle;
+    }
+    &.valign_bottom {
+        vertical-align: bottom;
+    }
+    /* https://stackoverflow.com/questions/1241757/applying-borders-to-a-single-table-cell-when-using-border-collapse */
+    &.border_top {
+        border-top: 1px double var(--border_color);
+    }
+    &.border_bottom {
+        border-bottom: 1px double var(--border_color);
+    }
+    &.border_left {
+        border-left: 1px double var(--border_color);
+    }
+    &.border_right {
+        border-right: 1px double var(--border_color);
+    }
+}
+
+:host {
+    position: relative;
+}
+
+:host .range_highlight {
+    background: none;
+    border: 2px solid red;
+
+    border-color: var(--highlight_color);
+}
+
+:host .formula_highlight {
+    color: var(--highlight_color);
+}
+
+:host .highlight_0 {
+    --highlight_color: #fa0c0c;
+}
+
+:host .highlight_1 {
+    --highlight_color: #fa0cfa;
+}
+
+:host .highlight_2 {
+    --highlight_color: #0c840c;
+}
+
+:host .highlight_3 {
+    --highlight_color: #010180;
+}
+
+:host .highlight_4 {
+    --highlight_color: #871717;
+}
+
+:host .highlight_5 {
+    --highlight_color: #871787;
+}
+
+:host .highlight_6 {
+    --highlight_color: #84840c;
+}
+
+:host .highlight_7 {
+    --highlight_color: #0c0cfa;
+}
+
+
+.copy_highlight {
+    border: 1px dashed black;
+    background: none;
+    pointer-events: none;
+}
+
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}

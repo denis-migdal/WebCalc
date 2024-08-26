@@ -42,7 +42,7 @@ export class PlageFormula extends LISS({
             ev.stopImmediatePropagation();
             ev.preventDefault();
 
-            const selected = this.#sheet.getCells(this.#input.textContent!).cells;
+            const selected = this.#sheet.getRange(this.#input.textContent!).cells;
 
             this.#sheet.selection.clear();
             this.#sheet.selection.add( ...selected );

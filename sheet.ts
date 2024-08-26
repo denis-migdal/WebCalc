@@ -738,6 +738,8 @@ export class CalcSheet extends LISS({
 
     resize(nbrows: number, nbcols: number) {
 
+        //this.#rows = null;
+
         const col_html = document.createElement('tr');
         col_html.append( document.createElement('th') );
 
@@ -889,6 +891,16 @@ export class CalcSheet extends LISS({
         return this.#tbody.firstElementChild!.children.length - 1;
     }
 
+    /*
+    #filterLine: null|((line: HTMLTableRowElement) => boolean) = null;
+    #filterIDX: number = 1;
+    #rows: null|HTMLTableRowElement[] = null;
+    filter(filter: null|((line: HTMLTableRowElement) => boolean), filterIDX: number = 1 ) {
+        this.#filterLine = filter;
+        this.update();
+        this.#filterIDX = filterIDX;
+    }*/
+
     #isUpdating: boolean = false;
     update() {
         if( this.#isUpdating === true )
@@ -897,6 +909,7 @@ export class CalcSheet extends LISS({
 
         window.requestAnimationFrame( () => {
 
+            //TODO: better ?
             const cells = [...this.content.querySelectorAll<Cell>('td')].filter( e => e.rawContent instanceof Formula);
             
             for(let cell of cells )
@@ -917,6 +930,25 @@ export class CalcSheet extends LISS({
                     cell.setAttribute('data-type', type);
                 }
             }
+
+            /*if( this.#filterLine === null) {
+                if(this.#rows !== null) { //TODO
+                    this.#tbody.replaceChildren(...this.#rows );
+                    this.#rows = null;
+                }
+            }
+            else {
+                if(this.#rows === null) { //TODO
+                    this.#rows = [...this.#tbody.children] as HTMLTableRowElement[];
+                }
+                this.#tbody.replaceChildren(...this.#rows.filter( (line, idx) => {
+
+                    if( idx < this.#filterIDX)
+                        return true;
+
+                    return this.#filterLine!(line);
+                }) );
+            }*/
 
             this.host.dispatchEvent( new CustomEvent('update') );
             this.#isUpdating = false;
